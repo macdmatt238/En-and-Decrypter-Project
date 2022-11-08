@@ -1,16 +1,21 @@
 #include<stdio.h>
+#include<string.h>
 
+ int main(int argc, char *argv[]){
 
-int main(char DorE, char *fileName[]) {
+	 
 
-	switch (DorE)
+	for (int i = 1; i < argc; i++)
 	{
-	case 'D':
-		Decrypting(fileName);
-		break;
-	default:
-		Incrypting(fileName);
-		break;
+		if (strcmp(argv[i], "-D") == 0) {
+			Decrypting();
+		}
+		else
+		{
+			
+			
+			Encrypting(argv[2]);
+		}
 	}
 
 	return 0;
