@@ -5,18 +5,18 @@
 
 	 
 
-	for (int i = 1; i < argc; i++)
-	{
-		if (strcmp(argv[i], "-D") == 0) {
+	
+		if (strcmp(argv[1], "-D") == 0) {
+			//printf("you picked decrypting");
 			Decrypting();
 		}
 		else
 		{
-			
+			//printf("you picked encrypting");
 			
 			Encrypting(argv[2]);
 		}
-	}
+	
 
 	return 0;
 }
