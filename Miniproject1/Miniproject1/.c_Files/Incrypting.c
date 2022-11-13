@@ -38,8 +38,12 @@ void Encrypting(char fileName[]) {
 		printf("\nEncrypting:\n");
 		fgets(text, 130, FP);
 		printf("%s\n", text);
+
 		for (int i = 0; i <= 130; i++)
 		{
+			printf("hi");
+			printf("%c", text[i]);
+			/*printf("%d", number);
 			number = text[i];
 			number -= 16;
 			if (number < 32)
@@ -47,8 +51,9 @@ void Encrypting(char fileName[]) {
 				number += 144;
 			}
 			printf("%d", number);
-			text[i]=number;
+			text[i]=number;*/
 		}
+
 		fprintf(OFP, text);
 		/*while (fgetc(FP) != EOF)
 		{
