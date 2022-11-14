@@ -2,12 +2,12 @@
 #include<string.h>
 void Encrypting(char fileName[]) {
 
-	int number;
+	int number, exceptions;
 	char text[130];
-	char fileNameCRP[50];
+	char fileNameCRP[50]="holder";
 	FILE* FP;
 	FILE *OFP;
-	int num = 0;
+	int num = 0, i = 0;
 	
 	printf("This is file name: %s\n",fileName);
 
@@ -36,48 +36,69 @@ void Encrypting(char fileName[]) {
 	{
 		OFP = fopen(fileNameCRP, "w");
 		printf("\nEncrypting:\n");
-		fgets(text, 130, FP);
-		printf("%s\n", text);
-
-		for (int i = 0; i <= 130; i++)
-		{
-			printf("hi");
-			printf("%c", text[i]);
-			/*printf("%d", number);
-			number = text[i];
-			number -= 16;
-			if (number < 32)
-			{
-				number += 144;
-			}
-			printf("%d", number);
-			text[i]=number;*/
-		}
-
-		fprintf(OFP, text);
-		/*while (fgetc(FP) != EOF)
+		
+		while (!feof(FP))
 		{
 			
-			fgets(text, 130, FP);
-			printf("%s", text);
+			text[i] = fgetc(FP);
 			
-			for (int i = 0; i <= 130; i++)
-			{
-				(int)text[i] -= 16;
-				if (text[i]<32)
+			
+			
+				printf("%c", text[i]);
+
+				
+
+				number = text[i];
+				exceptions = number;
+				
+				number -=  16;
+				
+				if (number <32)
 				{
-					text[i] += 144;
+					number = number - 32;
+					
+					number += 144;
+					
 				}
-			}
-			
-			//printf("%s", text);
-			fprintf(OFP,text);
-		}*/
+				
+				text[i] = number;
+				
+				
+				switch (exceptions)
+				{
+				case -1:					//exception for end of page
+					
+					break;
+				case 9:						//exception for tab
+					fprintf(OFP, "\t");
+					break;
+				case 10:					//exception for enter
+					fprintf(OFP, "\n");
+					break;
+				case 121:					//exception for y
+					fprintf(OFP, "69");
+					break;
+				case 32:					//exception for space
+					fprintf(OFP, "80");
+					break;
+				case 33:					//exception for !
+					fprintf(OFP, "81");
+					break;
+				case 46:					//exception for .
+					fprintf(OFP, "8E");
+					break;
+				default:					//no exceptions
+					fprintf(OFP, "%X", text[i]);
+					break;
+				}
+				
+				i++;
+		}
 		
-
+		printf("\nEncryption done\n");
 		
 		
-		printf("Encrypting...\n");
+		
 
 		
 		

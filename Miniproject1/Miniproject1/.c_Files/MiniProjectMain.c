@@ -8,7 +8,7 @@
 	
 		if (strcmp(argv[1], "-D") == 0) {
 			//printf("you picked decrypting");
-			Decrypting();
+			Decrypting(argv[2]);
 		}
 		else
 		{
