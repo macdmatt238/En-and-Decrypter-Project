@@ -2,45 +2,45 @@
 #include<string.h>
 void Encrypting(char fileName[]) {
 
-	int number, exceptions;
+	int number, exceptions;				
 	char text[130];
 	char fileNameCRP[50]="holder";
 	FILE* FP;
 	FILE *OFP;
 	int num = 0, i = 0;
 	
-	printf("This is file name: %s\n",fileName);
+	printf("This is file name: %s\n",fileName);		//outputs file name.
 
-	for (int i=0; i < 52; i++) {
+	for (int i=0; i < 52; i++) {	//scans all of filenameCRP.
 		
-		if (fileName[i] == 46)
+		if (fileName[i] == 46)	//cheaks for a period.
 	{
 			num = i;
 			
-			strncpy(fileNameCRP, fileName, num);
+			strncpy(fileNameCRP, fileName, num);	//copies everything before the period. 
 			
 			break;
 		}
 	}
 
 	
-	strcat(fileNameCRP, ".crp");
+	strcat(fileNameCRP, ".crp");	//adds .crp to the file name.
 	
-	FP = fopen(fileName, "r");
+	FP = fopen(fileName, "r");	//opens the file.
 
-	if (FP == NULL) {
+	if (FP == NULL) {		//checks if there is a file.
 		printf("Somthing went wrong\n");
 	
 	}
 	else
 	{
-		OFP = fopen(fileNameCRP, "w");
+		OFP = fopen(fileNameCRP, "w");	//makes and opens a new .crp file.
 		printf("\nEncrypting:\n");
 		
-		while (!feof(FP))
+		while (!feof(FP))	//scans file till the end.
 		{
 			
-			text[i] = fgetc(FP);
+			text[i] = fgetc(FP);	//scans each charicter.
 			
 			
 			
@@ -48,10 +48,10 @@ void Encrypting(char fileName[]) {
 
 				
 
-				number = text[i];
+				number = text[i];		//turns char into int.
 				exceptions = number;
 				
-				number -=  16;
+				number -=  16;		//starts encryption.
 				
 				if (number <32)
 				{
@@ -64,13 +64,13 @@ void Encrypting(char fileName[]) {
 				text[i] = number;
 				
 				
-				switch (exceptions)
+				switch (exceptions)		//prints into .crp file.
 				{
 				case -1:					//exception for end of page
 					
 					break;
 				case 9:						//exception for tab
-					fprintf(OFP, "\t");
+					fprintf(OFP, "TT");
 					break;
 				case 10:					//exception for enter
 					fprintf(OFP, "\n");

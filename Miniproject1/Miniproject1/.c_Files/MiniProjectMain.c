@@ -1,20 +1,20 @@
 #include<stdio.h>
 #include<string.h>
 
- int main(int argc, char *argv[]){
+ int main(int argc, char *argv[]){ //inputs the command line inputs.
 
 	 
 
 	
-		if (strcmp(argv[1], "-D") == 0) {
-			//printf("you picked decrypting");
-			Decrypting(argv[2]);
+		if (strcmp(argv[1], "-D") == 0) { //tests if the user inputs -D or not.
+			
+			Decrypting(argv[2]);	//runs the decrypt funtion.
 		}
 		else
 		{
-			//printf("you picked encrypting");
 			
-			Encrypting(argv[2]);
+			
+			Encrypting(argv[2]);	//runs the encrypt funtion.
 		}
 	
 
