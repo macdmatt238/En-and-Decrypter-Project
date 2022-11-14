@@ -45,7 +45,7 @@ void Encrypting(char fileName[]) {
 			
 			
 				printf("%c", text[i]);
-
+				printf("%d", text[i]);
 				
 
 				number = text[i];		//turns char into int.
@@ -84,8 +84,17 @@ void Encrypting(char fileName[]) {
 				case 33:					//exception for !
 					fprintf(OFP, "81");
 					break;
+				case 34:					//exception for !
+					fprintf(OFP, "82");
+					break;
+				case 39:					//exception for '
+					fprintf(OFP, "87");
+					break;
 				case 46:					//exception for .
 					fprintf(OFP, "8E");
+					break;
+				case 47:					//exception for /
+					fprintf(OFP, "08");
 					break;
 				default:					//no exceptions
 					fprintf(OFP, "%X", text[i]);

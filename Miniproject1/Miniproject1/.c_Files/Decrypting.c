@@ -69,7 +69,7 @@ void Decrypting(char fileName[]) {
 
 					number = text[i];
 					exceptions = number;
-					
+					printf("\n%d", number);
 					
 
 					if (number - 112 < 32 && 0< number-112)		//decrypts numbers
@@ -102,8 +102,14 @@ void Decrypting(char fileName[]) {
 					case -127:					//exception for !
 						fprintf(OFP, "!");
 						break;
+					case -121:					//exception for !
+						fprintf(OFP, "'");
+						break;
 					case -114:					//exception for .
 						fprintf(OFP, ".");
+						break;
+					case 8:					//exception for /
+						fprintf(OFP, "/");
 						break;
 					default:					//no exceptions
 						fprintf(OFP, "%c", text[i]);
