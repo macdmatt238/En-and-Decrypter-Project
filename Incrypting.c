@@ -45,7 +45,7 @@ void Encrypting(char fileName[]) {
 			
 			
 				printf("%c", text[i]);
-				printf("%d", text[i]);
+				
 				
 
 				number = text[i];		//turns char into int.

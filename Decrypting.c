@@ -3,7 +3,7 @@
 
 void Decrypting(char fileName[]) {
 
-		int number, exceptions;		
+		int number, exceptions,tab=0;		
 		char text[130];
 		char fileNameTXT[50] = "holder";
 		FILE* FP;
@@ -14,7 +14,7 @@ void Decrypting(char fileName[]) {
 
 		for (i = 0; i < 52; i++) {	//scans all of filenameTXT.
 
-			if (fileName[i] == 46)		//cheaks for a period.
+			if (fileName[i] == 46)		//checks for a period.
 			{
 				num = i;
 
@@ -42,12 +42,16 @@ void Decrypting(char fileName[]) {
 			{
 				
 
-				text[i] = fgetc(FP);			//scans each charicter.
-				
+				text[i] = fgetc(FP);			//scans each character.
+				printf("%c", text[i]);
 				
 				if (i % 2 != 0)		//every other scan it decrypts the two chars.
 				{
-					
+					if (text[i] == 'T' && text[i - 1] == 'T'){		//if it is TT print tab
+						fprintf(OFP, "\t");
+						tab = 1;
+					}
+
 					text[i - 1] *= 16;
 					
 					
@@ -69,7 +73,7 @@ void Decrypting(char fileName[]) {
 
 					number = text[i];
 					exceptions = number;
-					printf("\n%d", number);
+					
 					
 
 					if (number - 112 < 32 && 0< number-112)		//decrypts numbers
@@ -84,43 +88,44 @@ void Decrypting(char fileName[]) {
 					
 					text[i] = number;
 					
-
-					switch (exceptions)		//prints out onto the .txt
+					if (tab == 0)
 					{
-					case -1:					//exception for end of page
 
-						break;
-					case 93:					//exception for tab
-						fprintf(OFP, "\t");
-						break;
-					case 69:					//exception for y
-						fprintf(OFP, "y");
-						break;
-					case -128:					//exception for space
-						fprintf(OFP, " ");
-						break;
-					case -127:					//exception for !
-						fprintf(OFP, "!");
-						break;
-					case -121:					//exception for '
-						fprintf(OFP, "'");
-						break;
-					case -114:					//exception for .
-						fprintf(OFP, ".");
-						break;
-					case 8:					//exception for /
-						fprintf(OFP, "/");
-						break;
-					default:					//no exceptions
-						fprintf(OFP, "%c", text[i]);
-						break;
+
+						switch (exceptions)		//prints out onto the .txt
+						{
+						case -1:					//exception for end of page
+
+							break;
+						case 69:					//exception for y
+							fprintf(OFP, "y");
+							break;
+						case -128:					//exception for space
+							fprintf(OFP, " ");
+							break;
+						case -127:					//exception for !
+							fprintf(OFP, "!");
+							break;
+						case -121:					//exception for '
+							fprintf(OFP, "'");
+							break;
+						case -114:					//exception for .
+							fprintf(OFP, ".");
+							break;
+						case 8:					//exception for /
+							fprintf(OFP, "/");
+							break;
+						default:					//no exceptions
+							fprintf(OFP, "%c", text[i]);
+							break;
+						}
+
 					}
-
-
 				}
-				if (text[i] != 10) // checks if it is enter or not
+				if (text[i] != 10) { // checks if it is enter or not
 					i++;
-				else
+					tab = 0;
+				}else
 					fprintf(OFP, "\n");
 					
 				
