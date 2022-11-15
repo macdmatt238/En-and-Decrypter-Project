@@ -8,13 +8,13 @@
 	
 		if (strcmp(argv[1], "-D") == 0) { //tests if the user inputs -D or not.
 			
-			Decrypting(argv[2]);	//runs the decrypt funtion.
+			Decrypting(argv[2]);	//runs the decrypt function.
 		}
 		else
 		{
 			
 			
-			Encrypting(argv[2]);	//runs the encrypt funtion.
+			Encrypting(argv[2]);	//runs the encrypt function.
 		}
 	
 
