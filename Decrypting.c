@@ -18,7 +18,7 @@ void Decrypting(char fileName[]) {
 			{
 				num = i;
 
-				strncpy(fileNameTXT, fileName, num);	//copies everything before the period.
+				strncpy(fileNameTXT, fileName, num);	//copies everything before the period. 
 				
 				break;
 			}

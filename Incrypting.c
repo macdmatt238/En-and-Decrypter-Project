@@ -17,7 +17,7 @@ void Encrypting(char fileName[]) {
 	{
 			num = i;
 			
-			strncpy(fileNameCRP, fileName, num);	//copies everything before the period. 
+			strncpy(fileNameCRP, fileName, num);	//copies everything before the period.  
 			
 			break;
 		}

@@ -21,4 +21,4 @@
 	return 0;
 }
 /*gcc -Wall MiniProjectMain.c Incrypting.c Decrypting.c -o cryptoMagic.exe*/
-/*./cryptoMagic.exe*/
+/*./cryptoMagic.exe*/ 
