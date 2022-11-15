@@ -102,7 +102,7 @@ void Decrypting(char fileName[]) {
 					case -127:					//exception for !
 						fprintf(OFP, "!");
 						break;
-					case -121:					//exception for !
+					case -121:					//exception for '
 						fprintf(OFP, "'");
 						break;
 					case -114:					//exception for .

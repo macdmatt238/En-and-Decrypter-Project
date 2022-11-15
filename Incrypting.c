@@ -13,7 +13,7 @@ void Encrypting(char fileName[]) {
 
 	for (int i=0; i < 52; i++) {	//scans all of filenameCRP.
 		
-		if (fileName[i] == 46)	//cheaks for a period.
+		if (fileName[i] == 46)	//checks for a period.
 	{
 			num = i;
 			
@@ -40,7 +40,7 @@ void Encrypting(char fileName[]) {
 		while (!feof(FP))	//scans file till the end.
 		{
 			
-			text[i] = fgetc(FP);	//scans each charicter.
+			text[i] = fgetc(FP);	//scans each character.
 			
 			
 			
